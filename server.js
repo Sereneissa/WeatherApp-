@@ -7,8 +7,7 @@ const express = require("express");
 // Start up an instance of app
 const app = express();
 
-/* Middleware*/
-
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To parse the incoming requests with JSON payloads
 
