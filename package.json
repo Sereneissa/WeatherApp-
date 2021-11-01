@@ -1,7 +1,7 @@
 {
-  "name": "WeatherApp-root",
+  "name": "WeatherApp-master",
   "version": "1.0.0",
-  "description": "UdacityWeatherApp Live view: https://sereneissa.github.io/WeatherApp/",
+  "description": "UdacityWeatherApp Live view: https://sereneissa.github.io/WeatherApp-master/",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
