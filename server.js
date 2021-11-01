@@ -19,7 +19,6 @@ app.use(cors());
 const port = 3000;
 
 // Spin up the server
-const server = app.listen(port, listening);
 
 // Callback to debug
 const server = app.listen(port,listening);
