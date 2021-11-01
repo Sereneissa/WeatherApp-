@@ -46,7 +46,6 @@ function callBack(req, res) {
 }
 
 // POST request
-const projectData = []
 app.post("/addData", postData);
 
 function postData(request, response) {
