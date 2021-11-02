@@ -26,7 +26,7 @@ const server = app.listen(port,listening);
 
 
 function listening() {
-  console.log(server);
+  console.log("server running");
   console.log(`running on localhost: ${port}`);
 }
 
@@ -41,9 +41,10 @@ function sendData(request, response) {
   response.send(projectData);
 }
 
-app.get('/', function (req, res) {
-  res.render('index', {});
-});
+app.post("/add", callBack);
+function callBack(req, res) {
+  res.send("POST receieved");
+}
 
 // POST request
 app.post("/addData", postData);
