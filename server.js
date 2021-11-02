@@ -20,8 +20,10 @@ const port = 3000;
 
 // Spin up the server
 
+
 // Callback to debug
 const server = app.listen(port,listening);
+
 
 function listening() {
   console.log(server);
@@ -39,10 +41,9 @@ function sendData(request, response) {
   response.send(projectData);
 }
 
-app.post("/add", callBack);
-function callBack(req, res) {
-  res.send("POST receieved");
-}
+app.get('/', function (req, res) {
+  res.render('index', {});
+});
 
 // POST request
 app.post("/addData", postData);
