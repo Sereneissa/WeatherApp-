@@ -42,11 +42,14 @@ function sendData(request, response) {
 //POST request 
 app.post("/addAPI", (postData));
 function postData(request, response) {
-  projectData = request.body;
+  const projectData = request.body;
   response.send({ message: "Post recieved" });
   console.log('I got a request');
-  console.log(request);
-  response.end();
+  console.log(request.body);
+  request.json({
+    status:'success',
+  
+  });
 } 
 
 /*app.post("/addAPI", postData); */

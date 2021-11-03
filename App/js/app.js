@@ -39,22 +39,10 @@ const getForecastData = async (baseURL, zip, key) => {
 };
 
 
-/*const postData = async (url = "", data = {}) => {
-const response = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-};
-fetch('/addAPI', response);
-*/
-
-
 //Post request in async format - received from udacity course 
-const postData = async (url = "/addAPI", data = {}) => {
+const postData = async (baseURL = "/addAPI", data = {}) => {
   console.log(data);
-  const response = {
+  const options = {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -62,7 +50,7 @@ const postData = async (url = "/addAPI", data = {}) => {
     },
     body: JSON.stringify(data),
   };
-  await fetch('/addAPI', response);
+  const response = await fetch('/addAPI', options);
   try {
     const newData = await response.json();
     console.log(newData);
