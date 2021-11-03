@@ -38,7 +38,6 @@ const getForecastData = async (baseURL, zip, key) => {
   }
 };
 
-
 /*const postData = async (url = "", data = {}) => {
 const response = {
   method: 'POST',
@@ -83,7 +82,6 @@ let weatherData = (data) => {
   hum.innerHTML = `${data?.main?.humidity} %`;
   temp.innerHTML = `${Math.floor(data?.main?.temp - 273)} °C`;
   feelsLike.innerHTML = `${Math.floor(data?.main?.feels_like - 273)}°C`;
- 
 };
 
 //Implement error message

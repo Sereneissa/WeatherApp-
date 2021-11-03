@@ -48,7 +48,6 @@ function postData(request, response) {
   console.log(request.body);
   request.json({
     status:'success',
-  
   });
 } 
 
