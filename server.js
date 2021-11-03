@@ -20,13 +20,11 @@ const port = 3000;
 
 // Spin up the server
 
-
 // Callback to debug
 const server = app.listen(port,listening);
 
-
 function listening() {
-  console.log("server running");
+  console.log(server);
   console.log(`running on localhost: ${port}`);
 }
 
@@ -41,16 +39,22 @@ function sendData(request, response) {
   response.send(projectData);
 }
 
-app.post("/add", callBack);
-function callBack(req, res) {
-  res.send("POST receieved");
-}
-
-// POST request
-app.post("/addData", postData);
-
+//POST request 
+app.post("/addAPI", (postData));
 function postData(request, response) {
   projectData = request.body;
   response.send({ message: "Post recieved" });
+  console.log('I got a request');
   console.log(request);
-}
+  response.end();
+} 
+
+/*app.post("/addAPI", postData); */
+
+
+
+/*app.post('/addAPI', (request, response)=> {
+  projectData = request.body;
+  console.log(request);
+  response.send({message: "Post received"});
+})*/

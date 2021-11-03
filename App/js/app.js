@@ -3,8 +3,8 @@ const d = new Date();
 document.getElementById("date").innerHTML = d;
 
 //global variables
-let baseURL = "https://api.openweathermap.org/data/2.5/weather?";
-let apiKey = "&appid=f39afc0e7211a79d6b404b457dc3633a";
+let baseURL = 'https://api.openweathermap.org/data/2.5/weather?';
+let apiKey = '&appid=f39afc0e7211a79d6b404b457dc3633a';
 const metric = "&units=metric";
 
 //get selectors
@@ -38,19 +38,31 @@ const getForecastData = async (baseURL, zip, key) => {
   }
 };
 
-// Post request in async format - received from udacity course 
 
-const postData = async (url = "", data = {}) => {
+/*const postData = async (url = "", data = {}) => {
+const response = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+};
+fetch('/addAPI', response);
+*/
+
+
+//Post request in async format - received from udacity course 
+const postData = async (url = "/addAPI", data = {}) => {
   console.log(data);
-  const response = await fetch(url, {
+  const response = {
     method: "POST",
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  });
-
+  };
+  await fetch('/addAPI', response);
   try {
     const newData = await response.json();
     console.log(newData);
@@ -59,7 +71,6 @@ const postData = async (url = "", data = {}) => {
     console.log("error", error);
   }
 };
-
 
 
 //interact with the forecast data to show weather data
