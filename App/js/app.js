@@ -38,18 +38,6 @@ const getForecastData = async (baseURL, zip, key) => {
   }
 };
 
-/*const postData = async (url = "", data = {}) => {
-const response = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-};
-fetch('/addAPI', response);
-*/
-
-
 //Post request in async format - received from udacity course 
 const postData = async (url = "/addAPI", data = {}) => {
   console.log(data);
@@ -85,11 +73,12 @@ let weatherData = (data) => {
 };
 
 //Implement error message
-const getForecastError = async (baseURL, zip, key) => {
+const getForecastError = async (url, zip, key) => {
   const errorMsg = document.querySelector("#errormsg"); 
   try {
-    const response = await fetch(baseURL + zip + key);
+    const response = await fetch(baseURL + zip + apiKey);
     const data = await response.json();
+    console.log(data);
     if (data.cod === "404") {
       errorMsg.innerHTML = "Enter a valid zip code";
     } else {
@@ -119,12 +108,15 @@ const updateUI = async () => {
 };
 
 // Find users location & asks permission to locate
-const locationFinder = new Promise(function (resolve, error) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getLocation);
-  } else {
-    locationFinder.innerHTML = error("Location information is unavailable.");
-  }
+const locationFinder = () => {
+  return new Promise(function (resolve, reject) {
+  window.addEventListener('load', function() {
+    if (!navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getLocation);
+    } else {
+      navigator.innerHTML = reject("Location information is unavailable.");
+    }
+  });
   function getLocation(position) {
     locationFinder.innerHTML =
       "Latitude: " +
@@ -133,4 +125,21 @@ const locationFinder = new Promise(function (resolve, error) {
       position.coords.longitude;
     resolve(`worked`);
   }
-});
+
+  })
+
+};
+
+locationFinder()
+  .then(function(value){
+    return getForecastError(baseURL, metric, apiKey);
+  })
+
+  .then(function(value){
+    return getForecastData(baseURL, metric, apiKey);
+  })
+
+  .then(function(value){
+    return weatherData(data);
+  })
+
