@@ -105,16 +105,25 @@ const updateUI = async () => {
   } catch (error) {
     console.log("error", error);
   }
+  postData('/addAPI')
+      .then(function(allData){  
+        retrieveData('/all')
+      })
+      updateUI();
+
 };
+
+
+
 
 // Find users location & asks permission to locate
 const locationFinder = () => {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, error) {
   window.addEventListener('load', function() {
     if (!navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getLocation);
     } else {
-      navigator.innerHTML = reject("Location information is unavailable.");
+      navigator.innerHTML = error("Location information is unavailable.");
     }
   });
   function getLocation(position) {
@@ -141,5 +150,6 @@ locationFinder()
 
   .then(function(value){
     return weatherData(data);
-  })
+  }) 
+
 
