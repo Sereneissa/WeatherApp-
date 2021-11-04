@@ -57,6 +57,10 @@ const postData = async (url = "/addAPI", data = {}) => {
   } catch (error) {
     console.log("error", error);
   }
+  postData('/addAPI')
+  .then(function(data){  
+    gatherData('/all')
+  })
 };
 
 
@@ -105,10 +109,6 @@ const updateUI = async () => {
   } catch (error) {
     console.log("error", error);
   }
-  postData('/addAPI')
-      .then(function(allData){  
-        retrieveData('/all')
-      })
       updateUI();
 
 };

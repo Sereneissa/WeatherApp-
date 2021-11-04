@@ -32,7 +32,7 @@ function listening() {
 app.use(express.static("App"));
 
 //GET request
-app.get("/all", sendData);
+app.get("/all", (sendData));
 
 function sendData(request, response) {
   console.log("HELLLOOOOO >>>", request, response, projectData);
@@ -51,13 +51,4 @@ function postData(request, response) {
   });
 } 
 
-/*app.post("/addAPI", postData); */
-
-
-
-/*app.post('/addAPI', (request, response)=> {
-  projectData = request.body;
-  console.log(request);
-  response.send({message: "Post received"});
-})*/
 
