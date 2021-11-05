@@ -3,9 +3,9 @@ const d = new Date();
 document.getElementById("date").innerHTML = d;
 
 //global variables
-let baseURL = 'https://api.openweathermap.org/data/2.5/weather?';
-let apiKey = '&appid=f39afc0e7211a79d6b404b457dc3633a';
-const metric = "&units=metric";
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?';
+const apiKey = '&appid=f39afc0e7211a79d6b404b457dc3633a&units=metric/Celsius';
+const metric = "&units=metric/Celsius";
 
 //get selectors
 const submit = document.querySelector("#generate");
